@@ -1,4 +1,4 @@
-package java.栈;
+package stackqueue;
 
 import java.util.Stack;
 
