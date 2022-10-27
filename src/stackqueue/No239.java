@@ -1,6 +1,8 @@
 package stackqueue;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 
 /**
  * describe
@@ -17,17 +19,56 @@ public class No239 {
 //
         int[] nums = {-7, -8, 7, 5, 7, 1, 6, 0};
         int k = 4;
+//        int[] nums = {1, -1};
+//        int k = 1;
         System.out.println(Arrays.toString(maxSlidingWindow(nums, k)));
     }
 
     public static int[] maxSlidingWindow(int[] nums, int k) {
 
+        MyQueue queue = new MyQueue();
+        int[] ans = new int[nums.length - k + 1];
+        for (int i = 0; i < k; i++) {
+            queue.push(nums[i]);
+        }
+        ans[0] = queue.peek();
 
+        for (int i = k; i < nums.length; i++) {
 
+            queue.push(nums[i]);
+            queue.pop(nums[i - k]);
 
-        return null;
+            ans[i - k + 1] = queue.peek();
+
+        }
+
+        return ans;
     }
+    
+    static class MyQueue {
 
+        private  Deque<Integer> queue = new ArrayDeque<Integer>();
+
+        public void push(int val){
+            while (!queue.isEmpty() && val > queue.peekFirst()){
+                queue.pollFirst();
+            }
+
+            queue.push(val);
+        }
+
+        public void pop(int value){
+            if(!queue.isEmpty() && value == queue.peekLast()){
+                queue.pollLast();
+            }
+        }
+
+        public Integer peek(){
+            return queue.peekLast();
+        }
+
+    }
+    
     public static int[] maxSlidingWindowTimeOut2(int[] nums, int k) {
 
         if (k == 1) {
