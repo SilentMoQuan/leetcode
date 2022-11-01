@@ -1,4 +1,4 @@
-package java.tree;
+package tree;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ public class no623 {
 
     static ArrayList<TreeNode> treeNodes = new ArrayList<>();
 
-    static int a ;
+    static int a;
 
     public static void main(String[] args) {
         System.out.println(a);
@@ -21,7 +21,7 @@ public class no623 {
 
     public static TreeNode addOneRow(TreeNode root, int val, int depth) {
 
-        if(depth == 1){
+        if (depth == 1) {
             TreeNode node = new TreeNode(val);
             node.left = root;
             return node;
@@ -39,13 +39,13 @@ public class no623 {
         return root;
     }
 
-    public static void findNode(TreeNode node, int depth){
+    public static void findNode(TreeNode node, int depth) {
 
-        if(node == null){
+        if (node == null) {
             return;
         }
 
-        if(depth == 1){
+        if (depth == 1) {
             treeNodes.add(node);
             return;
         }
