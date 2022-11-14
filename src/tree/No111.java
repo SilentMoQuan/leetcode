@@ -13,15 +13,40 @@ import java.util.Deque;
 public class No111 {
 
     public int minDepth(TreeNode root) {
+        return getDeep(root);
+    }
+
+    public int getDeep(TreeNode node) {
+
+        if (null == node) {
+            return 0;
+        }
+
+        int leftDeep = getDeep(node.left);
+        int rightDeep = getDeep(node.right);
+
+        if (null == node.left && node == node.right) {
+            return 1;
+        } else if (null == node.left) {
+            return rightDeep + 1;
+        } else if (null == node.right) {
+            return leftDeep + 1;
+        }else {
+            return Math.min(leftDeep, rightDeep) + 1;
+        }
+
+    }
+
+    public int minDepthOld(TreeNode root) {
 
         int deep = 0;
-        if(root == null){
+        if (root == null) {
             return deep;
         }
 
         Deque<TreeNode> queue = new ArrayDeque<>();
         queue.addLast(root);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
 
             int size = queue.size();
 
@@ -30,7 +55,7 @@ public class No111 {
 
                 TreeNode node = queue.pollFirst();
 
-                if(node.left == null &&  null == node.right){
+                if (node.left == null && null == node.right) {
                     return deep;
                 }
 
