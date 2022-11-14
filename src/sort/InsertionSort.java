@@ -1,4 +1,4 @@
-package java.sort;
+package sort;
 
 import java.util.Arrays;
 
@@ -16,22 +16,42 @@ public class InsertionSort {
         int[] ints = {3, 4, 6, 213, 6, 34, 6, 342, 1, 5, 654, 7, 45, 74, 57, 44, 345, 234, 63, 4364};
         insertionSortAZ(ints);
         System.out.println(Arrays.toString(ints));
-        
+
     }
 
-    public static void insertionSortAZ(int[] arr){
+    public static void insertionSortAZ(int[] arr) {
+
+        for (int i = 1; i < arr.length; i++) {
+
+            int j = i;
+            int temp = arr[j];
+
+            while (j > 0 && temp < arr[j - 1]){
+                arr[j] = arr[j - 1];
+                j--;
+            }
+
+            if(j != i){
+                arr[j] = temp;
+            }
+
+        }
+
+    }
+
+    public static void insertionSortAZ04(int[] arr) {
 
         for (int i = 1; i < arr.length; i++) {
 
             int j = i;
             int temp = arr[i];
 
-            while (j > 0 && temp < arr[j - 1]){
-                arr[j] = arr[j -1 ];
+            while (j > 0 && temp < arr[j - 1]) {
+                arr[j] = arr[j - 1];
                 j--;
             }
 
-            if(j != i){
+            if (j != i) {
                 arr[j] = temp;
             }
 
@@ -45,12 +65,12 @@ public class InsertionSort {
             int j = i;
             int temp = arr[j];
 
-            while (j > 0 && arr[j - 1] < temp){
+            while (j > 0 && arr[j - 1] < temp) {
                 arr[j] = arr[j - 1];
                 j--;
             }
 
-            if(i != j){
+            if (i != j) {
                 arr[j] = temp;
             }
 
@@ -64,12 +84,12 @@ public class InsertionSort {
 
             int temp = arr[j];
 
-            while (j > 0 && temp < arr[j - 1]){
+            while (j > 0 && temp < arr[j - 1]) {
                 arr[j] = arr[j - 1];
                 j--;
             }
 
-            if(j != i){
+            if (j != i) {
                 arr[j] = temp;
             }
 
@@ -82,12 +102,12 @@ public class InsertionSort {
             int temp = arr[i];
 
             int j = i;
-            while (j > 0 && temp < arr[j - 1]){
+            while (j > 0 && temp < arr[j - 1]) {
                 arr[j] = arr[j - 1];
                 j--;
             }
 
-            if(j != i){
+            if (j != i) {
                 arr[j] = temp;
             }
 
