@@ -1,4 +1,4 @@
-package tree;
+package backtracking;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
