@@ -30,11 +30,15 @@ public class No491 {
             answer.add(new ArrayList<>(list));
         }
 
+        int [] flagArr = new int[200];
+
         for (int i = index; i < nums.length; i++){
 
-            if(nums[i] < per){
+            if(nums[i] < per || flagArr[nums[i] + 100] == 1){
                 continue;
             }
+
+            flagArr[nums[i]] = 1;
 
             list.add(nums[i]);
             backtracking(nums, i + 1, nums[i]);
