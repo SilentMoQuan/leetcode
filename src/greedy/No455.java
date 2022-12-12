@@ -1,4 +1,4 @@
-package backtracking;
+package greedy;
 
 import java.util.Arrays;
 
